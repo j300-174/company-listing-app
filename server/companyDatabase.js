@@ -1,5 +1,5 @@
 const { Pool, Client } = require('pg');
-const { company } = require('./companies');
+const { company } = require('./companiesCommands');
 const client = new Client({
     user: process.env.USER,
     host: process.env.PGHOST,
@@ -10,7 +10,7 @@ const client = new Client({
 
 const setupCompanies = () => {
   client.connect();
-  client.query(company.createTableCompanies, (err, res) => {
+  client.query(company.createTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table created successfully');
     client.end();
@@ -19,7 +19,7 @@ const setupCompanies = () => {
 
 const dropCompanies = () => {
   client.connect();
-  client.query(company.dropTableCompanies, (err, res) => {
+  client.query(company.dropTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table delete successfully');
   });
@@ -27,14 +27,25 @@ const dropCompanies = () => {
 
 const insertIntoCompanies = () => {
   client.connect();
-  client.query(company.insertIntoCompanies, (err, res) => {
+  client.query(company.insertIntoCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data inserted successfully');
   });
 }
 
+const getCompany = () => {
+  client.connect();
+  client.query(company.selectTableCompanies(), (err, res) => {
+    if (err) console.log(err);
+    if (res) console.log(res, 'data found successfully');
+    client.end();
+  });
+}
+
+// export to main app
 module.exports = {
   setupCompanies,
   dropCompanies,
-  insertIntoCompanies
+  insertIntoCompanies,
+  getCompany
 }
