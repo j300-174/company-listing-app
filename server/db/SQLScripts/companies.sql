@@ -6,6 +6,8 @@ CREATE TABLE tbl_companies (
   description TEXT NOT NULL
 );
 
+DROP TABLE tbl_companies CASCADE;
+
 INSERT INTO tbl_companies
 SELECT * FROM jsonb_to_recordset(
   '[
