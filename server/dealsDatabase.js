@@ -10,7 +10,10 @@ const client = new Client({
 
 // client.connect();
 const setupDeals = async() => {
-  await client.connect();
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  });
   await client.query(deals.createTableDeals(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table created successfully');
@@ -19,7 +22,10 @@ const setupDeals = async() => {
 }
 
 const dropDeals = async() => {
-  await client.connect();
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  });
   await client.query(deals.dropTableDeals(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table delete successfully');
@@ -28,7 +34,10 @@ const dropDeals = async() => {
 }
 
 const insertIntoDeals = async() => {
-  await client.connect();
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  });
   await client.query(deals.insertIntoDeals(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data inserted successfully');
@@ -37,7 +46,10 @@ const insertIntoDeals = async() => {
 }
 
 const getDeals = async() => {
-  await client.connect();
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  });
   await client.query(deals.selectTableDeals(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data found successfully');
