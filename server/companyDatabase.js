@@ -7,9 +7,13 @@ const client = new Client({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT
 });
-client.connect();
+// client.connect();
 
 const setupCompanies = async() => {
+  client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  });
   await client.query(company.createTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table created successfully');
@@ -18,6 +22,10 @@ const setupCompanies = async() => {
 }
 
 const dropCompanies = async() => {
+  client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  })
   await client.query(company.dropTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table delete successfully');
@@ -26,6 +34,10 @@ const dropCompanies = async() => {
 }
 
 const insertIntoCompanies = async() => {
+  client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client connected');
+  })
   await client.query(company.insertIntoCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data inserted successfully');
@@ -34,6 +46,10 @@ const insertIntoCompanies = async() => {
 }
 
 const getCompany = async() => {
+  client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client, connected');
+  })
   await client.query(company.selectTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data found successfully');
