@@ -1,5 +1,8 @@
 -- ** Average employee count **
+-- ANS:
 SELECT AVG(employee_count) FROM tbl_companies; -- 235.10
+
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 -- Average deal amount raised by country
 SELECT valuation, company_name FROM tbl_deals JOIN tbl_companies
@@ -29,9 +32,20 @@ SELECT AVG(tbl_deals.amount_invested), tbl_companies.country
 FROM tbl_deals, tbl_companies WHERE tbl_deals.company_name = tbl_companies.name
 GROUP BY tbl_companies.country;
 
--- valuation:
+-- valuation ANS:
 SELECT AVG(tbl_deals.valuation), tbl_companies.country
 FROM tbl_deals, tbl_companies WHERE tbl_deals.company_name = tbl_companies.name
 GROUP BY tbl_companies.country;
 
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 -- ** Total amount invested per quarter over time **
+-- Sums up amount invested by quarter, need to consider yearly aswell
+SELECT SUM(tbl_deals.amount_invested), date_part('quarter', date) AS quarter FROM tbl_deals GROUP BY quarter;
+-- sums amount invested by quarter for each year
+SELECT SUM(tbl_deals.amount_invested), date_part('quarter', date) AS quarter, date_part('year', date) AS year FROM tbl_deals GROUP BY quarter, year, amount_invested;
+-- sums amount
+SELECT SUM(tbl_deals.amount_invested), date_part('quarter', date) AS quarter, date_part('year', date) AS year FROM tbl_deals GROUP BY quarter, year;
+-- SUMS amount invested per quarter, per year
+-- ANS: 
+SELECT SUM(amount_invested), date_part('quarter', date) AS quarter, date_part('year', date) AS year FROM tbl_deals GROUP BY year, quarter;
