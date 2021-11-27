@@ -42,7 +42,7 @@ const getCompany = async() => {
 }
 
 // export to main app
-module.exports = {
+module.exports.company = {
   setupCompanies,
   dropCompanies,
   insertIntoCompanies,
