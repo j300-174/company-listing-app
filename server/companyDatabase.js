@@ -7,38 +7,37 @@ const client = new Client({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT
 });
+client.connect();
 
-const setupCompanies = () => {
-  client.connect();
-  client.query(company.createTableCompanies(), (err, res) => {
+const setupCompanies = async() => {
+  await client.query(company.createTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table created successfully');
-    client.end();
+    // client.end();
   });
 }
 
-const dropCompanies = () => {
-  client.connect();
-  client.query(company.dropTableCompanies(), (err, res) => {
+const dropCompanies = async() => {
+  await client.query(company.dropTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table delete successfully');
+    // client.end();
   });
 }
 
-const insertIntoCompanies = () => {
-  client.connect();
-  client.query(company.insertIntoCompanies(), (err, res) => {
+const insertIntoCompanies = async() => {
+  await client.query(company.insertIntoCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data inserted successfully');
+    // client.end();
   });
 }
 
-const getCompany = () => {
-  client.connect();
-  client.query(company.selectTableCompanies(), (err, res) => {
+const getCompany = async() => {
+  await client.query(company.selectTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data found successfully');
-    client.end();
+    // client.end();
   });
 }
 
