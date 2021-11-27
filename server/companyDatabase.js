@@ -10,7 +10,7 @@ const client = new Client({
 // client.connect();
 
 const setupCompanies = async() => {
-  client.connect(err => {
+  await client.connect(err => {
     if (err) console.log('already connected, continue');
     else console.log('client connected');
   });
@@ -22,7 +22,7 @@ const setupCompanies = async() => {
 }
 
 const dropCompanies = async() => {
-  client.connect(err => {
+  await client.connect(err => {
     if (err) console.log('already connected, continue');
     else console.log('client connected');
   })
@@ -34,7 +34,7 @@ const dropCompanies = async() => {
 }
 
 const insertIntoCompanies = async() => {
-  client.connect(err => {
+  await client.connect(err => {
     if (err) console.log('already connected, continue');
     else console.log('client connected');
   })
@@ -46,7 +46,7 @@ const insertIntoCompanies = async() => {
 }
 
 const getCompany = async() => {
-  client.connect(err => {
+  await client.connect(err => {
     if (err) console.log('already connected, continue');
     else console.log('client, connected');
   })
