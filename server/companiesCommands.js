@@ -93,13 +93,19 @@ const insertIntoCompanies = () => {
   ) AS x(name text, employee_count int, date_founded date, country text, description text);`;
 }
 
+// Select all companies
 const selectTableCompanies = () => {
   return `SELECT * FROM tbl_companies;`;
+}
+
+const selectCompanyNames = () => {
+  return `SELECT name FROM tbl_companies;`
 }
 
 module.exports.company = {
   createTableCompanies,
   dropTableCompanies,
   insertIntoCompanies,
-  selectTableCompanies
+  selectTableCompanies,
+  selectCompanyNames
 }
