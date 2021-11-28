@@ -7,7 +7,6 @@ const client = new Client({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT
 });
-// client.connect();
 
 const setupCompanies = async() => {
   await client.connect(err => {
@@ -17,7 +16,6 @@ const setupCompanies = async() => {
   await client.query(company.createTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table created successfully');
-    // client.end();
   });
 }
 
@@ -29,7 +27,6 @@ const dropCompanies = async() => {
   await client.query(company.dropTableCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'table delete successfully');
-    // client.end();
   });
 }
 
@@ -41,7 +38,6 @@ const insertIntoCompanies = async() => {
   await client.query(company.insertIntoCompanies(), (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data inserted successfully');
-    // client.end();
   });
 }
 
@@ -49,18 +45,37 @@ const getCompany = async() => {
   await client.connect(err => {
     if (err) console.log('already connected, continue');
     else console.log('client, connected');
-  })
-  await client.query(company.selectTableCompanies(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'data found successfully');
-    // client.end();
   });
+
+  let result = await client.query(company.selectTableCompanies())
+    .then(console.log('company names found successfully'))
+    .catch(error => console.log(error.stack));
+
+    if (result) {
+      console.log(result, 'data found successfully');
+      return result.rows;
+    }
 }
 
-// export to main app
+const getCompanyNames = async() => {
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client, connected');
+  });
+
+  let result = await client.query(company.selectCompanyNames())
+    .then(console.log('company names found successfully'))
+    .catch(error => console.log(error.stack));
+  if (result) {
+    console.log('client has data, now disconnected');
+    return result.rows;
+  }
+}
+
 module.exports.company = {
   setupCompanies,
   dropCompanies,
   insertIntoCompanies,
+  getCompanyNames,
   getCompany
 }
