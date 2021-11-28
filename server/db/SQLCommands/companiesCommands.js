@@ -98,8 +98,14 @@ const selectTableCompanies = () => {
   return `SELECT * FROM tbl_companies;`;
 }
 
+// Select only company names
 const selectCompanyNames = () => {
   return `SELECT name FROM tbl_companies;`
+}
+
+// Select single company
+const selectOneCompany = (name) => {
+  return `SELECT * FROM tbl_companies WHERE name = '${name}';`;
 }
 
 module.exports.company = {
@@ -107,5 +113,6 @@ module.exports.company = {
   dropTableCompanies,
   insertIntoCompanies,
   selectTableCompanies,
-  selectCompanyNames
+  selectCompanyNames,
+  selectOneCompany
 }

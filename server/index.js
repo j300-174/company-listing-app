@@ -30,6 +30,11 @@ app.get('/company/names', async(req, res) => {
   res.send(names);
 });
 
+app.get('/company/:nameID', async(req, res) => {
+  // const company = await company.getCompanyByID(req.params.nameID);
+  console.log('company input is:', req.params.nameID);
+})
+
 // task1
 app.get('/company/average/employee', async(req, res) => {
   const avgEmployeeCount = await tasks.getAvgEmployeeCount();
