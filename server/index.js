@@ -1,6 +1,6 @@
 const { company } = require('./companies/companyDatabase');
 const { tasks } = require('./tasks/tasksDatabase');
-const { deal } = require('./dealsDatabase');
+const { deal } = require('./deals/dealsDatabase');
 const express = require('express');
 const cors = require('cors');
 const app = express();
