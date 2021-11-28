@@ -36,12 +36,6 @@ SELECT tbl_deals.valuation, tbl_deals.company_name, tbl_companies.country
 FROM tbl_deals, tbl_companies WHERE tbl_deals.company_name = tbl_companies.name;
 
 -- ** command works out the average invested grouped by country **
-/*
-  avg          | country
-  -----------------------+---------
-  13050000.000000000000 | GBR
-  550000.000000000000 | USA
-*/
 
 SELECT AVG(tbl_deals.amount_invested), tbl_companies.country
 FROM tbl_deals, tbl_companies WHERE tbl_deals.company_name = tbl_companies.name
@@ -51,6 +45,12 @@ GROUP BY tbl_companies.country;
 SELECT AVG(tbl_deals.valuation), tbl_companies.country
 FROM tbl_deals, tbl_companies WHERE tbl_deals.company_name = tbl_companies.name
 GROUP BY tbl_companies.country;
+/*
+  avg          | country
+  -----------------------+---------
+  13050000.000000000000 | GBR
+  550000.000000000000 | USA
+*/
 
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
