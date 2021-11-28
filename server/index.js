@@ -25,6 +25,10 @@ app.get('/company/names', async(req, res) => {
   res.send(names);
 })
 
+app.get('/:id', (req ,res) => {
+  res.status(404).send('Page not found');
+})
+
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);
 })
