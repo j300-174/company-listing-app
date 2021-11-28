@@ -1,4 +1,4 @@
-const { company } = require('./companyDatabase');
+const { company } = require('./companies/companyDatabase');
 const { tasks } = require('./tasks/tasksDatabase');
 const { deal } = require('./dealsDatabase');
 const express = require('express');
