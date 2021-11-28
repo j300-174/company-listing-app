@@ -1,5 +1,5 @@
 const { company } = require('./companyDatabase');
-const { tasks } = require('./tasksDatabase');
+const { tasks } = require('./tasks/tasksDatabase');
 const { deal } = require('./dealsDatabase');
 const express = require('express');
 const cors = require('cors');
@@ -42,14 +42,14 @@ app.get('/company/average/deal', async(req, res) => {
   const avgDealRaised = await tasks.getAvgDealRaised();
   console.log(avgDealRaised);
   res.send(avgDealRaised);
-})
+});
 
 // task3
 app.get('/company/total/investment', async(req, res) => {
   const totalInvestment = await tasks.getTotalInvestedPerQuarter();
   console.log(totalInvestment);
   res.send(totalInvestment);
-})
+});
 
 app.get('/:id', (req ,res) => {
   res.status(404).send('Page not found');
