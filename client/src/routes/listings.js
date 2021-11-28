@@ -8,16 +8,20 @@ class Listings extends Component {
     companyNames: []
   }
 
-  componentDidMount() {
+  getCompanies = async() => {
     const config = {
       method: 'get',
       url: 'http://localhost:3001/company/list'
     }
     axios.get(config.url).then(res => {
-        const list = res.data;
-        console.log('list: ', list);
-        this.setState({ companyNames: list });
+        const company = res.data;
+        console.log('list of companies: ', company);
+        this.setState({ companyNames: company });
     });
+  }
+
+  componentDidMount() {
+    this.getCompanies();
   }
 
   render() {
