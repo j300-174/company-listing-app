@@ -72,10 +72,25 @@ const getCompanyNames = async() => {
   }
 }
 
+const getCompanyByID = async(nameID) => {
+  await client.connect(err => {
+    if (err) console.log('already connected, continue');
+    else console.log('client, connected');
+  });
+  let result = await client.query(company.selectOneCompany(nameID))
+    .then(console.log('company found successfully'))
+    .catch(error => console.log(error.stack));
+  if (result) {
+    console.log('client has data, now disconnected', result.rows);
+    return result.rows;
+  }
+}
+
 module.exports.company = {
   setupCompanies,
   dropCompanies,
   insertIntoCompanies,
   getCompanyNames,
-  getCompany
+  getCompany,
+  getCompanyByID
 }

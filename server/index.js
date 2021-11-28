@@ -31,8 +31,10 @@ app.get('/company/names', async(req, res) => {
 });
 
 app.get('/company/:nameID', async(req, res) => {
-  // const company = await company.getCompanyByID(req.params.nameID);
   console.log('company input is:', req.params.nameID);
+  const oneCompany = await company.getCompanyByID(req.params.nameID);
+  console.log('company is:', oneCompany);
+  res.send(oneCompany);
 })
 
 // task1
