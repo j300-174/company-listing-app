@@ -1,5 +1,5 @@
 const { Pool, Client } = require('pg');
-const { deals } = require('./dealsCommands');
+const { deals } = require('../SQLCommands/dealsCommands');
 const client = new Client({
     user: process.env.USER,
     host: process.env.PGHOST,

@@ -1,4 +1,4 @@
-const { countries } = require('./countriesCommands');
+const { countries } = require('../SQLCommands/countriesCommands');
 const { Pool, Client } = require('pg');
 const client = new Client({
     user: process.env.USER,
