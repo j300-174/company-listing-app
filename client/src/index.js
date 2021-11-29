@@ -32,7 +32,7 @@ ReactDOM.render(
         <Route path='/listings/Micronus' element={<Micronus />} />
         <Route path='/listings/Neocell%20Systems' element={<NeocellSystems />} />
         <Route path='/listings/Networx' element={<Networx />} />
-        <Route path='/listings/Consultio%20Consultius' element={<ConsultioConsultius />} />
+        <Route path='/listings/Consultio%2FConsultius' element={<ConsultioConsultius />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
