@@ -80,6 +80,12 @@ const getCompanyByID = async(nameID) => {
   let result = await client.query(company.selectOneCompany(nameID))
     .then(console.log('company found successfully'))
     .catch(error => console.log(error.stack));
+
+  // handle companies w/ '/'
+  if (companyObj.name.includes('/')) {
+    companyObj.name = companyObj.name.replace('/', '2%F');
+  }
+
   if (result) {
     console.log('client has data, now disconnected', result.rows);
     return result.rows;
