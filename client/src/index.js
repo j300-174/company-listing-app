@@ -15,7 +15,7 @@ import Listings from './routes/listings';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './App';
-import './index.css';
+import './css/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
