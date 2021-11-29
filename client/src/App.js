@@ -1,6 +1,5 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import { Component } from 'react';
-import FollowerList from './routes/followerList';
 import axios from 'axios';
 import EmployeeCount from './components/employeeCount';
 import DealRaised from './components/dealRaised';
