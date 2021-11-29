@@ -1,0 +1,19 @@
+table, thead, tr, th, tbody {
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td, th {
+  border: 1px solid;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+tr {
+  background-color: #f2f2f2;
+}
