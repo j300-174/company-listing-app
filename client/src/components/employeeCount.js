@@ -4,8 +4,8 @@ export default function EmployeeCount (countObj) {
   return (
     <div>
       <h2>Statistics based on existing Company data</h2>
-      <p>Average employee count within existing companies:</p>
-      <input placeholder={count} />
+      <p>Average employee count within existing companies</p>
+      <p>{count}</p>
     </div>
   );
 }

@@ -3,7 +3,9 @@ import { Component } from 'react';
 import FollowerList from './routes/followerList';
 import axios from 'axios';
 import './App.css';
-import EmployeeCount from './components/employeeCount'
+import EmployeeCount from './components/employeeCount';
+import DealRaised from './components/dealRaised';
+import TotalInvestment from './components/totalInvestment';
 
 class App extends Component {
   state = {
@@ -136,30 +138,10 @@ class App extends Component {
               <EmployeeCount count={employeeCount} />
             </div>
             <div>
-              <h3>Average Deal raised (valuation) for existing companies:</h3>
-              <ul>{avgDealRaised.map((company, index) => (
-                <div>
-                  <li key={index}>
-                    <p>{company.avg}</p>
-                    <p>{company.country}</p>
-                  </li>
-                </div>
-              ))}
-              </ul>
+              <DealRaised deal={avgDealRaised} />
             </div>
             <div>
-            <h3>Total investment (valuation) per quarter per year for existing
-            companies</h3>
-            <ul>{totalInvestment.map((company, index) => (
-              <div>
-                <li key={index}>
-                  <p>Sum: {company.sum}</p>
-                  <p>Quarter: {company.quarter}</p>
-                  <p>Year: {company.year}</p>
-                </li>
-              </div>
-            ))}
-            </ul>
+              <TotalInvestment valuation={totalInvestment} />
           </div>
         </div>
       </main>
