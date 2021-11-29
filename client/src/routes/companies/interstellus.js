@@ -38,7 +38,7 @@ class Interstellus extends Component {
     } = this.state.company;
 
     return (
-      <div>
+      <div className='CompanyTables'>
         <h1>Interstellus</h1>
         <h2>Company Data</h2>
         <table>

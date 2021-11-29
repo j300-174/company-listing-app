@@ -65,3 +65,23 @@ button:hover {
 .FollowList li {
   font-weight: bold;
 }
+
+.CompanyTables th:first-child, td:first-child {
+  width: 15%;
+}
+
+.CompanyTables th:nth-child(2), td:nth-child(2) {
+  width: 5%;
+}
+
+.CompanyTables th:nth-child(3), td:nth-child(3) {
+  width: 15%;
+}
+
+.CompanyTables th:nth-child(4), td:nth-child(4) {
+  width: 5%;
+}
+
+.CompanyTables th:nth-child(5), td:nth-child(5) {
+  width: 60%;
+}

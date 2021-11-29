@@ -38,7 +38,7 @@ class Eratech extends Component {
     } = this.state.company;
 
     return (
-      <div>
+      <div className='CompanyTables'>
         <h1>Eratech</h1>
         <h2>Company Data</h2>
         <table>

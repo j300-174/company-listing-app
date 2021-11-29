@@ -38,7 +38,7 @@ class Cybernetix extends Component {
     } = this.state.company;
 
     return (
-      <div>
+      <div className='CompanyTables'>
         <h1>Cybernetix</h1>
         <h2>Company Data</h2>
         <table>

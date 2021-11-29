@@ -38,7 +38,7 @@ class Testerix extends Component {
     } = this.state.company;
 
     return (
-      <div>
+      <div className='CompanyTables'>
         <h1>Testerix</h1>
         <h2>Company Data</h2>
         <table>
