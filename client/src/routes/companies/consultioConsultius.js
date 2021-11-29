@@ -1,33 +1,54 @@
 import { Component } from 'react';
-
+import axios from 'axios';
 class ConstultioConsultius extends Component {
   state = {
-    company: []
+    company: {
+      name: '',
+      employee_count: 0,
+      date_founded: '',
+      country: '',
+      description: '',
+    }
   }
 
-  getCompanies = async() => {
+  getCompany = async() => {
+    const name = 'Consultio%2FConsultius';
     const config = {
       method: 'get',
-      url: 'http://localhost:3001/company/list'
+      url: `http://localhost:3001/company/${name}`
     }
     axios.get(config.url).then(res => {
         const company = res.data;
-        console.log('list of companies: ', company);
-        this.setState({ companyNames: company });
+        console.log('company: ', company);
+        this.setState({ company: company });
     });
   }
 
   componentDidMount() {
-    this.getCompanies();
+    this.getCompany();
   }
 
-  //call
-  getData = () => {
-
-  }
   render() {
+    const {
+      name,
+      employee_count,
+      date_founded,
+      country,
+      description
+    } = this.state.company;
+
     return (
-      <h1>Constultio Consultius</h1>
+      <div>
+        <h1>Constultio Consultius</h1>
+        <h2>Company data: </h2>
+        <ul>
+          <li>Name: { name }</li>
+          <li>Employee Count: { employee_count }</li>
+          <li>Date Founded: { date_founded }</li>
+          <li>Country: { country }</li>
+          <li>Description: { description }</li>
+        </ul>
+      </div>
     );
   }
 }

@@ -77,13 +77,20 @@ const getCompanyByID = async(nameID) => {
     if (err) console.log('already connected, continue');
     else console.log('client, connected');
   });
+
+  // handle ID w/ %2F
+  if (nameID.includes('%2F')) {
+    let x = nameID.replace('%2F', '/');
+    nameID = x;
+  }
+
   let result = await client.query(company.selectOneCompany(nameID))
     .then(console.log('company found successfully'))
     .catch(error => console.log(error.stack));
 
   if (result) {
     console.log('client has data, now disconnected', result.rows);
-    return result.rows;
+    return result.rows[0];
   }
 }
 
