@@ -1,0 +1,67 @@
+/* GLOBAL STYLES */
+body {
+  background-color: lightblue;
+  font-size: 0.5em;
+  text-align: center;
+}
+
+table {
+}
+
+h1 {
+  font-size: 3em;
+  color: blue;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+li, a, p {
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none
+}
+
+a {
+  color: #62B5E5;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  background-color: #40C1AC;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+}
+
+button:hover {
+  background-color: #00FBFF;
+}
+
+.FollowList ul {
+  display: flex;
+  flex-direction: row;
+  background-color: #F3E500;
+  justify-content: space-between;
+}
+
+.FollowList li {
+  font-weight: bold;
+}
