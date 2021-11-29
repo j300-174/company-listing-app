@@ -3,6 +3,7 @@ import { Component } from 'react';
 import FollowerList from './routes/followerList';
 import axios from 'axios';
 import './App.css';
+import EmployeeCount from './components/employeeCount'
 
 class App extends Component {
   state = {
@@ -132,10 +133,7 @@ class App extends Component {
           </div>
           <div className="">
             <div>
-              <h2>Statistics based on existing Company data</h2>
-              <p>Average employee count within existing companies:</p>
-              <h3>employeeCount</h3>
-              <input placeholder={employeeCount} />
+              <EmployeeCount count={employeeCount} />
             </div>
             <div>
               <h3>Average Deal raised (valuation) for existing companies:</h3>
