@@ -5,9 +5,6 @@ body {
   text-align: center;
 }
 
-table {
-}
-
 h1 {
   font-size: 3em;
   color: blue;
@@ -38,9 +35,9 @@ a:hover {
   text-decoration: underline;
 }
 
-
 main {
   display: flex;
+  flex-direction: column-reverse;
   justify-content: space-around;
 }
 
@@ -56,14 +53,15 @@ button:hover {
 }
 
 .FollowList ul {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   background-color: #F3E500;
-  justify-content: space-between;
+  /* justify-content: center; */
 }
 
 .FollowList li {
   font-weight: bold;
+  margin: 0.2rem 0;
 }
 
 .CompanyTables th:first-child, td:first-child {
@@ -84,4 +82,26 @@ button:hover {
 
 .CompanyTables th:nth-child(5), td:nth-child(5) {
   width: 60%;
+}
+
+@media screen and (min-width: 520px) {
+  main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 900px) {
+
+  .FollowList ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .FollowList li {
+    font-weight: bold;
+    margin: 0.5em 1em;
+  }
+
 }
