@@ -9,16 +9,20 @@ export default function DealRaised (dealObj) {
     <div>
       <h3>Average Deal raised for existing companies by Country</h3>
       <table>
-        <tr>
-          <th>Average</th>
-          <th>Country</th>
-        </tr>
-        {dealRaised.map((company, index) => (
+        <thead>
           <tr>
-            <td>{company.avg}</td>
-            <td>{company.country}</td>
+            <th>Average</th>
+            <th>Country</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {dealRaised.map((company, index) => (
+            <tr key={index}>
+              <td>{company.avg}</td>
+              <td>{company.country}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

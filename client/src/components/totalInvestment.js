@@ -4,18 +4,22 @@ export default function TotalInvestment(totalObj) {
     <div>
       <h3>Total investment (valuation) per quarter per year</h3>
       <table>
-        <tr>
-          <th>Sum</th>
-          <th>Quarter</th>
-          <th>Year</th>
-        </tr>
+          <thead>
+            <tr key={250}>
+              <th>Sum</th>
+              <th>Quarter</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
         {totalInvestment.map((company, index) => (
-        <tr>
-          <td>{company.sum}</td>
-          <td>{company.quarter}</td>
-          <td>{company.year}</td>
-        </tr>
+            <tr key={index}>
+              <td>{company.sum}</td>
+              <td>{company.quarter}</td>
+              <td>{company.year}</td>
+            </tr>
         ))}
+        </tbody>
       </table>
     </div>
   );
