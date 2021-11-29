@@ -40,14 +40,27 @@ class StellaNovus extends Component {
     return (
       <div>
         <h1>Stella Novus</h1>
-        <h2>Company data: </h2>
-        <ul>
-          <li>Name: { name }</li>
-          <li>Employee Count: { employee_count }</li>
-          <li>Date Founded: { date_founded }</li>
-          <li>Country: { country }</li>
-          <li>Description: { description }</li>
-        </ul>
+        <h2>Company Data</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Employee Count</th>
+              <th>Date Founded</th>
+              <th>Country</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{ name }</td>
+              <td>{ employee_count }</td>
+              <td>{ date_founded }</td>
+              <td>{ country }</td>
+              <td>{ description }</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
