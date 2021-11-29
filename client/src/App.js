@@ -2,10 +2,11 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Component } from 'react';
 import FollowerList from './routes/followerList';
 import axios from 'axios';
-import './App.css';
 import EmployeeCount from './components/employeeCount';
 import DealRaised from './components/dealRaised';
 import TotalInvestment from './components/totalInvestment';
+import './css/table.css';
+import './css/App.css';
 
 class App extends Component {
   state = {
@@ -99,23 +100,24 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>Company Listings Ltd.</h1>
-          <Link to={{
-            pathname:'/listings'
-          }}>Listings
-          </Link>
-
-          <h2>Companies followed:</h2>
-          <div>
+          <section className='CompanyLink'>
+            <h1>Company Listings Ltd.</h1>
+            <Link to={{ pathname:'/listings' }}>Listings</Link>
+          </section>
+          <section className='FollowList'>
+            <h2>Companies followed:</h2>
             <ul>
-              {followerList.map(company => (
-                <li>{company.name}</li>
+              {followerList.map((company, index) => (
+                <li key={index}>
+                  {company.name}
+                </li>
               ))}
             </ul>
-          </div>
+          </section>
         </header>
+
         <main>
-          <div className="">
+          <section className='CompanyList'>
             <ul>
             {companyNames.map((company, index) => (
               <li key={index}>
@@ -132,20 +134,16 @@ class App extends Component {
               </li>
             ))}
             </ul>
-          </div>
-          <div className="">
-            <div>
-              <EmployeeCount count={employeeCount} />
-            </div>
-            <div>
-              <DealRaised deal={avgDealRaised} />
-            </div>
-            <div>
-              <TotalInvestment valuation={totalInvestment} />
-          </div>
-        </div>
-      </main>
-    </div>
+          </section>
+
+          <section className='Statistics'>
+            <h2>Statistics based on existing Company data</h2>
+            <EmployeeCount count={employeeCount} />
+            <DealRaised deal={avgDealRaised} />
+            <TotalInvestment valuation={totalInvestment} />
+          </section>
+        </main>
+      </div>
     );
   }
 }
