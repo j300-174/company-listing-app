@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Component } from 'react';
+import FollowerList from './routes/followerList';
 import axios from 'axios';
 import './App.css';
 
@@ -8,7 +9,8 @@ class App extends Component {
     companyNames: [],
     employeeCount: {},
     avgDealRaised: [],
-    totalInvestment: []
+    totalInvestment: [],
+    followerList: []
   }
 
   // handler methods
@@ -68,19 +70,46 @@ class App extends Component {
     this.getTotalInvestedPerQuarter();
   }
 
+  handleSubmit = (event, companyObj) => {
+    event.preventDefault();
+    // adds new companyObj to followList
+    let tempState = this.state.followerList;
+
+    // check if already following...
+    if (tempState.includes(companyObj)) {
+      console.log('Error, company already exists in the list!');
+    } else {
+      tempState.push(companyObj);
+      this.setState({ followerList: tempState });
+    }
+  }
+
   render() {
-    let { companyNames, employeeCount, avgDealRaised, totalInvestment } = this.state;
-    console.log(employeeCount);
+    let {
+      companyNames,
+      employeeCount,
+      avgDealRaised,
+      totalInvestment,
+      followerList
+    } = this.state;
+
     return (
       <div className="App">
         <header>
-        <h1>Company Listings Ltd.</h1>
-        <Link to='/foo'>Foo</Link>
-        <Link to={{
-          pathname:'/listings'
-        }}>
-          Listings
-        </Link>
+          <h1>Company Listings Ltd.</h1>
+          <Link to={{
+            pathname:'/listings'
+          }}>Listings
+          </Link>
+
+          <h2>Companies followed:</h2>
+          <div>
+            <ul>
+              {followerList.map(company => (
+                <li>{company.name}</li>
+              ))}
+            </ul>
+          </div>
         </header>
         <main>
           <div className="">
@@ -93,7 +122,10 @@ class App extends Component {
                 >
                   <h2>{company.name}</h2>
                 </Link>
-                <button type='submit'>Follow</button>
+                <button
+                  type='submit'
+                  onClick={event => this.handleSubmit(event, company)}
+                >Follow {company.name}</button>
               </li>
             ))}
             </ul>
