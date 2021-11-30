@@ -117,6 +117,7 @@ class App extends Component {
 
         <main>
           <section className='CompanyList'>
+            <h2>List of Companies</h2>
             <ul>
             {companyNames.map((company, index) => (
               <li key={index}>
