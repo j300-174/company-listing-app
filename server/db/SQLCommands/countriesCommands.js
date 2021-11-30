@@ -1,6 +1,6 @@
 // CREATE TABLE COUNTRIES
 const createTableCountries = () => {
-  return `CREATE TABLE tbl_countries (
+  return `CREATE TABLE IF NOT EXISTS tbl_countries (
     country_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     iso_code TEXT NOT NULL
@@ -34,7 +34,9 @@ const insertIntoCountries = () => {
             "iso_code": "USA"
         }
     ]'
-  ) AS x(name text, iso_code text);`
+  ) AS x(name text, iso_code text)
+  ON CONFLICT (country_id)
+  DO NOTHING;`;
 }
 
 // SELECT ALL COUNTRIES
