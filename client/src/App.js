@@ -66,7 +66,20 @@ class App extends Component {
       });
   }
 
+  startupDatabase = async() => {
+    const config = {
+      method: 'get',
+      url: 'http://localhost:3001/'
+    }
+    axios.get(config.url)
+      .then(res => {
+        const response = res.data;
+        console.log(response);
+      });
+  }
+
   componentDidMount() {
+    this.startupDatabase();
     this.getCompanyNames();
     this.getEmployeeCount();
     this.getAvgDealRaised();

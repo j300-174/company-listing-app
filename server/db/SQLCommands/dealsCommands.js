@@ -1,5 +1,5 @@
 const createTableDeals = () => {
-  return `CREATE TABLE tbl_deals (
+  return `CREATE TABLE IF NOT EXISTS tbl_deals (
     deals_id SERIAL PRIMARY KEY,
     date DATE NOT NULL,
     amount_invested INTEGER NOT NULL,
@@ -59,7 +59,9 @@ const insertIntoDeals = () => {
             "valuation": 100000000
         }
     ]'
-  ) AS x(company text, date date, amount_invested integer, valuation integer);`;
+  ) AS x(company text, date date, amount_invested integer, valuation integer)
+  ON CONFLICT (deals_id)
+  DO NOTHING;`;
 }
 
 const selectTableDeals = () => {

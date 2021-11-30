@@ -1,3 +1,4 @@
+const { startDatabase } = require('./db/Service/startDatabase');
 const { company } = require('./db/Service/companyDatabase');
 const { tasks } = require('./db/Service/tasksDatabase');
 const { deal } = require('./db/Service/dealsDatabase');
@@ -5,6 +6,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = 3001;
+require('dotenv').config();
 
 // specific urls used for CORS
 app.use('/', cors());
@@ -14,8 +16,11 @@ app.use('/company/average/employee', cors());
 app.use('/company/average/deal', cors());
 app.use('/company/total/investment', cors());
 
+// database setup here
 app.get('/', (req, res) => {
-  res.send('hello world');
+  const result = startDatabase();
+  console.log(result);
+  res.send('database data setup');
 });
 
 app.get('/company/list', async(req, res) => {
