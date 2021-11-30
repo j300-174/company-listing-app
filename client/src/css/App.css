@@ -54,13 +54,15 @@ button:hover {
 .FollowList ul {
   /* display: flex;
   flex-direction: row; */
-  background-color: #F3E500;
+  /* background-color: #F3E500; */
+  background-color: #222;
   /* justify-content: center; */
 }
 
 .FollowList li {
   font-weight: bold;
   margin: 0.2rem 0;
+  color: #62B5E5;
 }
 
 .CompanyTables th:first-child, td:first-child {
@@ -83,11 +85,27 @@ button:hover {
   width: 60%;
 }
 
+.CompanyGrid {
+  background-color: #222;
+  padding: 1em 0;
+}
+
 /* MEDIUM STYLES */
-@media screen and (min-width: 520px) {
+@media screen and (min-width: 730px) {
   main {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .CompanyGrid ul {
+    padding: 5em 5em;
+    display: grid;
+    grid-column-gap: 20px;
+  }
+
+  .Test {
+    display: grid;
+    grid-template-columns: auto auto auto;
   }
 }
 
@@ -101,8 +119,14 @@ button:hover {
   }
 
   .FollowList li {
-    font-weight: bold;
     margin: 0.5em 1em;
   }
 
+  .CompanyGrid ul {
+    grid-column-gap: 0px;
+  }
+
+  .Test {
+    grid-template-columns: auto auto auto auto;
+  }
 }

@@ -131,22 +131,22 @@ class App extends Component {
         <main>
           <section className='CompanyList'>
             <h2>List of Companies</h2>
-            <ul>
-            {companyNames.map((company, index) => (
-              <li key={index}>
-                <Link
-                  to={`/listings/${company.name}`}
-                  key={company.name}
-                >
-                  <h2>{company.name}</h2>
-                </Link>
-                <button
-                  type='submit'
-                  onClick={event => this.handleSubmit(event, company)}
-                >Follow {company.name}</button>
-              </li>
-            ))}
-            </ul>
+            <div className='CompanyGrid'>
+              <ul className='Test'>
+              {companyNames.map((company, index) => (
+                <li key={index}>
+                  <Link to={`/listings/${company.name}`} key={company.name}>
+                    <h3>{company.name}</h3>
+                  </Link>
+                  <button
+                    type='submit'
+                    onClick={event => this.handleSubmit(event, company)}>
+                    Follow {company.name}
+                  </button>
+                </li>
+              ))}
+              </ul>
+            </div>
           </section>
 
           <section className='Statistics'>
