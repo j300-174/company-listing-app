@@ -83,6 +83,7 @@ button:hover {
   width: 60%;
 }
 
+/* MEDIUM STYLES */
 @media screen and (min-width: 520px) {
   main {
     display: flex;
@@ -90,6 +91,7 @@ button:hover {
   }
 }
 
+/* LARGER STYLES */
 @media screen and (min-width: 900px) {
 
   .FollowList ul {
