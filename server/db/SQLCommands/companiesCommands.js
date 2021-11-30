@@ -1,6 +1,6 @@
 // CREATE TABLE COMPANIES
 const createTableCompanies = () => {
-  return `CREATE TABLE tbl_companies (
+  return `CREATE TABLE IF NOT EXISTS tbl_companies (
     name TEXT PRIMARY KEY,
     employee_count INT NOT NULL,
     date_founded DATE NOT NULL,
@@ -90,7 +90,9 @@ const insertIntoCompanies = () => {
             "description": "An ethical hotline - ethics experts answer questions related to ethics for fee per hour"
         }
     ]'
-  ) AS x(name text, employee_count int, date_founded date, country text, description text);`;
+  ) AS x(name text, employee_count int, date_founded date, country text, description text)
+  ON CONFLICT (name)
+  DO NOTHING;`;
 }
 
 // Select all companies
