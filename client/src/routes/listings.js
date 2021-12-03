@@ -44,7 +44,7 @@ class Listings extends Component {
 
   render() {
     const companyNames = this.state.companyNames;
-    let companyWithSlash = this.replaceSlashes(companyNames);
+    this.replaceSlashes(companyNames);
 
     // create list of company names here to display...
     let companyList = [];
