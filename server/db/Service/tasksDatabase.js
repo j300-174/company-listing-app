@@ -1,5 +1,3 @@
-// const { tasks } = require('../SQLCommands/tasksCommands');
-// const { company } = require('../SQLCommands/companiesCommands');
 const { Pool, Client } = require('pg');
 const client = new Client({
     user: process.env.USER,
