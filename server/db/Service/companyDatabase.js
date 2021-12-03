@@ -1,5 +1,4 @@
 const { Pool, Client } = require('pg');
-const { company } = require('../SQLCommands/companiesCommands');
 const client = new Client({
     user: process.env.USER,
     host: process.env.PGHOST,
@@ -14,7 +13,7 @@ const getCompany = async() => {
     else console.log('client, connected');
   });
 
-  let result = await client.query(company.selectTableCompanies())
+  let result = await client.query(`SELECT * FROM tbl_companies;`)
     .then(console.log('company names found successfully'))
     .catch(error => console.log(error.stack));
 
@@ -30,7 +29,7 @@ const getCompanyNames = async() => {
     else console.log('client, connected');
   });
 
-  let result = await client.query(company.selectCompanyNames())
+  let result = await client.query(`SELECT name FROM tbl_companies;`)
     .then(console.log('company names found successfully'))
     .catch(error => console.log(error.stack));
   if (result) {
@@ -50,8 +49,7 @@ const getCompanyByID = async(nameID) => {
     let x = nameID.replace('%2F', '/');
     nameID = x;
   }
-
-  let result = await client.query(company.selectOneCompany(nameID))
+  let result = await client.query(`SELECT * FROM tbl_companies WHERE name = '${nameID}';`)
     .then(console.log('company found successfully'))
     .catch(error => console.log(error.stack));
 
