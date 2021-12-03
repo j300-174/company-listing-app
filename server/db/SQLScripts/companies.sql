@@ -6,8 +6,6 @@ CREATE TABLE tbl_companies (
   description TEXT NOT NULL
 );
 
-DROP TABLE tbl_companies CASCADE;
-
 INSERT INTO tbl_companies
 SELECT * FROM jsonb_to_recordset(
   '[
@@ -83,6 +81,3 @@ SELECT * FROM jsonb_to_recordset(
       }
   ]'
 ) AS x(name text, employee_count int, date_founded date, country text, description text);
-
--- Average employee_count:
-SELECT AVG(employee_count) FROM tbl_companies; -- 235.10
