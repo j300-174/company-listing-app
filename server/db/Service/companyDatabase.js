@@ -8,39 +8,6 @@ const client = new Client({
     port: process.env.PGPORT
 });
 
-const setupCompanies = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  });
-  await client.query(company.createTableCompanies(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'table created successfully');
-  });
-}
-
-const dropCompanies = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  })
-  await client.query(company.dropTableCompanies(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'table delete successfully');
-  });
-}
-
-const insertIntoCompanies = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  })
-  await client.query(company.insertIntoCompanies(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'data inserted successfully');
-  });
-}
-
 const getCompany = async() => {
   await client.connect(err => {
     if (err) console.log('already connected, continue');
@@ -95,9 +62,6 @@ const getCompanyByID = async(nameID) => {
 }
 
 module.exports.company = {
-  setupCompanies,
-  dropCompanies,
-  insertIntoCompanies,
   getCompanyNames,
   getCompany,
   getCompanyByID

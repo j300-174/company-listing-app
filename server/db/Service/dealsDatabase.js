@@ -8,43 +8,6 @@ const client = new Client({
     port: process.env.PGPORT
 });
 
-// client.connect();
-const setupDeals = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  });
-  await client.query(deals.createTableDeals(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'table created successfully');
-    // client.end();
-  });
-}
-
-const dropDeals = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  });
-  await client.query(deals.dropTableDeals(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'table delete successfully');
-    // client.end();
-  });
-}
-
-const insertIntoDeals = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  });
-  await client.query(deals.insertIntoDeals(), (err, res) => {
-    if (err) console.log(err);
-    if (res) console.log(res, 'data inserted successfully');
-    // client.end();
-  });
-}
-
 const getDeals = async() => {
   await client.connect(err => {
     if (err) console.log('already connected, continue');
@@ -59,8 +22,5 @@ const getDeals = async() => {
 
 // export to server
 module.exports.deal = {
-  setupDeals,
-  dropDeals,
-  insertIntoDeals,
   getDeals
 }

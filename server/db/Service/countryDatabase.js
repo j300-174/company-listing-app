@@ -8,39 +8,6 @@ const client = new Client({
     port: process.env.PGPORT
 });
 
-const setupCountries = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client, connected');
-  });
-  let result = await client.query(countries.createTableCountries())
-    .then(console.log('country table setup successfully'))
-    .catch(error => console.log(error.stack));
-  if (result) console.log(result);
-}
-
-const dropCountries= async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  })
-  let result = await client.query(countries.dropTableCountries())
-    .then(console.log('country table dropped successfully'))
-    .catch(error => console.log(error.stack));
-  if (result) console.log(result);
-}
-
-const insertIntoCountries = async() => {
-  await client.connect(err => {
-    if (err) console.log('already connected, continue');
-    else console.log('client connected');
-  })
-  let result = await client.query(countries.insertIntoCountries())
-    .then(console.log('country data inserted successfully'))
-    .catch(error => console.log(error.stack));
-  if (result) console.log(result);
-}
-
 const getCountries = async() => {
   await client.connect(err => {
     if (err) console.log('already connected, continue');
@@ -54,8 +21,5 @@ const getCountries = async() => {
 }
 
 module.exports.countries = {
-  setupCountries,
-  dropCountries,
-  insertIntoCountries,
   getCountries
 }

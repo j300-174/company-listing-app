@@ -6,8 +6,6 @@ CREATE TABLE tbl_deals (
   company_name TEXT NOT NULL REFERENCES company(name)
 );
 
-DROP TABLE tbl_deals CASCADE;
-
 INSERT INTO tbl_deals (company_name, date, amount_invested, valuation)
 SELECT * FROM json_to_recordset(
   '[
@@ -55,5 +53,3 @@ SELECT * FROM json_to_recordset(
       }
   ]'
 ) AS x(company text, date date, amount_invested integer, valuation integer);
-
-SELECT * FROM tbl_deals;

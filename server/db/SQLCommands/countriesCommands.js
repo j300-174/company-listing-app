@@ -7,11 +7,6 @@ const createTableCountries = () => {
   );`
 }
 
-// DROP TABLE COUNTRIES
-const dropTableCountries = () => {
-  return `DROP TABLE tbl_countries CASCADE;`;
-}
-
 // INSERT DATA INTO COUNTRIES
 const insertIntoCountries = () => {
   return `INSERT INTO tbl_countries (name, iso_code)
@@ -46,7 +41,5 @@ const selectAllCountries = () => {
 
 module.exports.countries = {
   createTableCountries,
-  dropTableCountries,
-  insertIntoCountries,
   selectAllCountries
 }
