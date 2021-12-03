@@ -7,12 +7,6 @@ const createTableCountries = () => {
   );`
 }
 
-// SELECT ALL COUNTRIES
-const selectAllCountries = () => {
-  return `SELECT * FROM tbl_countries;`;
-}
-
 module.exports.countries = {
-  createTableCountries,
-  selectAllCountries
+  createTableCountries
 }

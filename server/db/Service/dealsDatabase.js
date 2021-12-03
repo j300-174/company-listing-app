@@ -1,5 +1,4 @@
 const { Pool, Client } = require('pg');
-const { deals } = require('../SQLCommands/dealsCommands');
 const client = new Client({
     user: process.env.USER,
     host: process.env.PGHOST,
@@ -13,7 +12,7 @@ const getDeals = async() => {
     if (err) console.log('already connected, continue');
     else console.log('client connected');
   });
-  await client.query(deals.selectTableDeals(), (err, res) => {
+  await client.query(`SELECT * FROM tbl_deals;`, (err, res) => {
     if (err) console.log(err);
     if (res) console.log(res, 'data found successfully');
     // client.end();

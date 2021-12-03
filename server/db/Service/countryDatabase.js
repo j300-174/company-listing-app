@@ -1,4 +1,3 @@
-const { countries } = require('../SQLCommands/countriesCommands');
 const { Pool, Client } = require('pg');
 const client = new Client({
     user: process.env.USER,
@@ -14,7 +13,7 @@ const getCountries = async() => {
     else console.log('client, connected');
   });
 
-  let result = await client.query(countries.selectAllCountries())
+  let result = await client.query(`SELECT * FROM tbl_countries;`)
     .then(console.log('country names found successfully'))
     .catch(error => console.log(error.stack));
   if (result) console.log(result.rows);
