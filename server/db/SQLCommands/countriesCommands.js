@@ -7,33 +7,6 @@ const createTableCountries = () => {
   );`
 }
 
-// INSERT DATA INTO COUNTRIES
-const insertIntoCountries = () => {
-  return `INSERT INTO tbl_countries (name, iso_code)
-  SELECT * FROM jsonb_to_recordset (
-    '[
-        {
-            "name": "United Kingdom",
-            "iso_code": "GBR"
-        },
-        {
-            "name": "France",
-            "iso_code": "FRA"
-        },
-        {
-            "name": "Germany",
-            "iso_code": "DEU"
-        },
-        {
-            "name": "United States of America",
-            "iso_code": "USA"
-        }
-    ]'
-  ) AS x(name text, iso_code text)
-  ON CONFLICT (country_id)
-  DO NOTHING;`;
-}
-
 // SELECT ALL COUNTRIES
 const selectAllCountries = () => {
   return `SELECT * FROM tbl_countries;`;
