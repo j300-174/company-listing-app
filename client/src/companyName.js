@@ -2,28 +2,41 @@ import { Component, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const CompanyData = () => {
-    let { company } = useParams();
-    const [companyName, setCompanyName] = useState(company);
-    const [companyData, setCompany] = useState({});
-
-    const companyHandler = () => {
-      console.log('company name into function', companyName);
-      const url = `http://localhost:3001/company/${companyName}`;
-      axios.get(url).then(res => {
-          const company = res.data;
-          console.log('company: ', company);
-          setCompany(company);
-      });
+const handleURL = (company) => {
+  let newCompany = '';
+  for (let i = 0; i < company.length; i++) {
+    if (company[i] === ' ') {
+      newCompany += ('%20');
+      continue;
+    } else if (company[i] === '/') {
+      newCompany += ('%2F');
+      continue;
     }
+    newCompany += (company[i]);
+  }
+  return newCompany;
+}
+
+
+
+const CompanyData = () => {
+  let { company } = useParams();
+  let newCompany = handleURL(company);
+  const [companyName, setCompanyName] = useState(newCompany);
+  const [companyData, setCompany] = useState({});
+
+  const companyHandler = () => {
+    const url = `http://localhost:3001/company/${newCompany}`;
+    axios.get(url).then(res => {
+      const company = res.data;
+      setCompany(company);
+    });
+  }
 
   return (
     <div>
-      <h1>Company Data</h1>
       <h1>{company}</h1>
-      <button onClick={companyHandler}>Click to setup Companies</button>
-
-      <h1>{companyData.name}</h1>
+      <button onClick={companyHandler}>Data</button>
       <table>
         <thead>
           <tr>

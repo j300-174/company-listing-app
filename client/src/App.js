@@ -158,12 +158,12 @@ class App extends Component {
               {companyNames.map((company, index) => (
                 <li key={index}>
                   <Link to={`/${company.name}`} key={company.name}>
-                    <h3>{company.name}</h3>
+                    <h3>{newList[index]}</h3>
                   </Link>
                   <button
                     type='submit'
                     onClick={event => this.handleSubmit(event, company)}>
-                    Follow {company.name}
+                    Follow {newList[index]}
                   </button>
                 </li>
               ))}
