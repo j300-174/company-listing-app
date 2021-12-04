@@ -26,7 +26,6 @@ class App extends Component {
     await axios.get(config.url).then(res => {
       let count = res.data.avg;
       count = Math.trunc(count*100)/100;
-      console.log('employee count: ', count);
       this.setState({ employeeCount: count }); // test
     });
   }
@@ -38,7 +37,6 @@ class App extends Component {
     }
     await axios.get(config.url).then(res => {
       let deal = res.data;
-      console.log('deal: ', deal);
       this.setState({ avgDealRaised: deal });
     });
   }
@@ -50,7 +48,6 @@ class App extends Component {
     }
     await axios.get(config.url).then(res => {
         const total = res.data;
-        console.log('total investment per quarter: ', total);
         this.setState({ totalInvestment: total });
     });
   }
