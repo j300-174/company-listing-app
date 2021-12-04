@@ -16,12 +16,14 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './App';
 import './css/index.css';
+import CompanyName from './companyName';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} />
+        <Route path='/:company' element={<CompanyName />} />
         <Route path='/listings' element={<Listings />} />
         <Route path='/listings/Stella%20Novus' element={<StellaNovus />} />
         <Route path='/listings/Interstellus' element={<Interstellus />} />
