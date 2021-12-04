@@ -4,6 +4,7 @@ import axios from 'axios';
 import EmployeeCount from './components/employeeCount';
 import DealRaised from './components/dealRaised';
 import TotalInvestment from './components/totalInvestment';
+import CompanyName from './companyName';
 import './css/table.css';
 import './css/App.css';
 
@@ -87,14 +88,32 @@ class App extends Component {
     }
   }
 
+  handleURL = (companyNames) => {
+    companyNames.map(company => {
+      if (company.name.includes('/')) {
+        company.name = company.name.replace('/', '%2F');
+      } else if (company.name.includes(' ')) {
+        company.name = company.name.replace(' ', '%20');
+      }
+    });
+  }
+
   render() {
     let {
-      companyNames,
-      employeeCount,
-      avgDealRaised,
-      totalInvestment,
-      followerList
+      companyNames, employeeCount, avgDealRaised,
+      totalInvestment, followerList
     } = this.state;
+
+    this.handleURL(companyNames);
+
+    let newList = [];
+    companyNames.map(company => {
+      if (company.name.includes('%2F')) {
+        newList.push(company.name.replace('%2F', '/'));
+      } else if (company.name.includes('%20')) {
+        newList.push(company.name.replace('%20', ' '));
+      } else newList.push(company.name);
+    });
 
     return (
       <div className="App">
@@ -122,7 +141,26 @@ class App extends Component {
               <ul className='Test'>
               {companyNames.map((company, index) => (
                 <li key={index}>
-                  <Link to={`/listings/${company.name}`} key={company.name}>
+                  <Link
+                    to={`/listings/${company.name}`}
+                    key={company.name}>
+                    <h3>{newList[index]}</h3>
+                  </Link>
+                  <button
+                    type='submit'
+                    onClick={event => this.handleSubmit(event, company)}>
+                    Follow {newList[index]}
+                  </button>
+                </li>
+              ))}
+              </ul>
+            </div>
+
+            <div className='CompanyGrid'>
+              <ul className='Test'>
+              {companyNames.map((company, index) => (
+                <li key={index}>
+                  <Link to={`/${company.name}`} key={company.name}>
                     <h3>{company.name}</h3>
                   </Link>
                   <button
