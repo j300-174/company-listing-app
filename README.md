@@ -1,5 +1,4 @@
-# beauhurstTest
-
+# Company Listings App
 ## Setup:
 
 ### From github:
